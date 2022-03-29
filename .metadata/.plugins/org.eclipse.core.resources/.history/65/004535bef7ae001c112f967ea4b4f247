@@ -1,0 +1,21 @@
+package br.com.caelum.ed.vetores.testes;
+
+import br.com.caelum.ed.Aluno;
+import br.com.caelum.ed.vetores.Vetor;
+
+public class TesteLinearVSConstante {
+
+	public static void main(String[] args) {
+		Vetor vetor = new Vetor();
+		
+		long inicio = System.currentTimeMillis();
+		for (int index = 1; index < 100000; index++) {
+			Aluno aluno = new Aluno();
+			vetor.adicionaDeFormaLinear(aluno);
+		}
+		long fim = System.currentTimeMillis();
+		double tempo = (fim - inicio) / 1000.0;
+		
+	}
+	
+}

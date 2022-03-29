@@ -1,0 +1,119 @@
+package br.com.caelum.ed;
+
+import java.util.Arrays;
+
+public class Vetor {
+
+	// controladores de posicao
+	private int indexadorAtual = 0;
+	private int tamanhoAtual = 0;
+	
+	// declarando e inicializando um array encapsulado de Aluno
+	// com capacidade 100
+	
+	// declara um array (vetor) do tipo alunos, 
+	// apos asscia uma instancia de array do tipo aluno, 
+	// com tamanho fixo de 100
+	private Aluno[] alunos = new Aluno[100000];
+	
+	private boolean posicaoValida(int posicao) {
+		return posicao >= 0 && posicao <= this.tamanhoAtual;
+	}
+	
+	public void adiciona(Aluno novoAluno) {
+		boolean insere = true;
+		while(insere) {
+			Aluno posicao = alunos[this.indexadorAtual];
+			if (posicao == null) {
+				alunos[this.indexadorAtual] = novoAluno;
+			}
+			this.indexadorAtual += this.indexadorAtual + 1;
+			this.tamanhoAtual += this.indexadorAtual;
+			insere = false;
+		}
+	}
+	
+	public void adiciona(int posicao, Aluno aluno) {
+		if (!this.posicaoValida(posicao)) {
+			throw new IllegalArgumentException("Posição inválida");
+		}
+
+		System.out.println(posicao);
+		
+		if (alunos[posicao] == null) {
+			alunos[posicao] = aluno;
+		} else {
+			System.out.println(this.tamanhoAtual - 1);
+			for (int index = this.tamanhoAtual - 1; index >= posicao; index-=1) {
+				System.out.println(index);
+				this.alunos[index + 1] = this.alunos[index];
+			}
+			
+			alunos[posicao] = aluno;
+			this.indexadorAtual = this.indexadorAtual + 1;
+		}
+		
+	}
+	
+	public Aluno pega(int posicao) throws NotFoundException {
+		if (alunos[posicao] == null) {
+			throw new NotFoundException("Nao encontrei isso");
+		}
+		else {
+			return alunos[posicao];
+		}
+	}
+	
+	public void remove(int posicao) throws NotFoundException {
+		if (alunos[posicao] == null) {
+			throw new NotFoundException("Nao encontrei isso");
+		}
+		else {
+			alunos[posicao] = null;
+			tamanhoAtual = tamanhoAtual - 1;
+		}
+		
+	}
+	
+	public boolean contem(Aluno aluno) {
+		int indexadorLocal = 0;
+		boolean procurar = true;
+		boolean encontrado = false;
+		
+		while (procurar) {
+			try {
+				if (alunos[indexadorLocal].getNome().toString().equals(aluno.getNome())) {
+					procurar = false;
+					encontrado = true;
+				}
+				indexadorLocal = indexadorLocal + 1;
+			} catch (NullPointerException e) {
+				return encontrado;
+			}
+		}
+
+		return encontrado;
+	}
+	
+	public int tamanho() {
+		return this.tamanhoAtual;
+	}
+	
+	public String toString() {
+		if (this.tamanhoAtual == 0) {
+			return "[]";
+		}
+	
+		StringBuilder builder = new StringBuilder();
+		builder.append("[");
+		for (int index = 0; index < this.tamanhoAtual - 1; index++) {
+			builder.append(this.alunos[index]);
+			builder.append(",");
+		}
+		builder.append(this.alunos[this.tamanhoAtual - 1]);
+		builder.append("]");
+
+		return builder.toString();
+	}
+	
+}

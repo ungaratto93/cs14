@@ -1,0 +1,9 @@
+package br.com.caelum.ed;
+
+public class TesteTamanhoLista {
+
+	public class static void main(String[] args) {
+		
+	}
+	
+}

@@ -1,0 +1,9 @@
+package br.com.caelum.ed;
+
+public class TesteContemAluno {
+
+	public static void main(String[] args) {
+		
+	}
+	
+}

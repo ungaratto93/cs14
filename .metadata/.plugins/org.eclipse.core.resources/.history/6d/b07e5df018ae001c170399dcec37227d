@@ -1,0 +1,9 @@
+package br.com.caelum.ed;
+
+public class TesteAdicionaNoFim {
+
+	public static void main(String[] args) {
+		
+	}
+	
+}
