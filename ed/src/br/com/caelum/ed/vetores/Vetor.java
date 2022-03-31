@@ -107,15 +107,18 @@ public class Vetor {
 		boolean encontrado = false;
 		
 		while (procurar) {
-			try {
-				if (((Aluno) this.objetos[indexadorLocal]).getNome().toString().equals(aluno.getNome())) {
-					procurar = false;
-					encontrado = true;
-				}
-				indexadorLocal = indexadorLocal + 1;
-			} catch (NullPointerException e) {
-				return encontrado;
+
+			if (this.objetos.length - 1 == indexadorLocal) {
+				procurar = false;
 			}
+
+			if (aluno == this.objetos[indexadorLocal] ) {
+				procurar = false;
+				encontrado = true;
+			}
+
+			indexadorLocal = indexadorLocal + 1;
+
 		}
 
 		return encontrado;

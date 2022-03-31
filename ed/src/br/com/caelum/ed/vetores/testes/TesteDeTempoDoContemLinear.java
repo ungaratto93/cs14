@@ -3,7 +3,7 @@ package br.com.caelum.ed.vetores.testes;
 import br.com.caelum.ed.alunos.Aluno;
 import br.com.caelum.ed.vetores.Vetor;
 
-public class TesteDeTempoDoContem {
+public class TesteDeTempoDoContemLinear {
 
 	public static void main(String[] args) {
 		
@@ -18,7 +18,7 @@ public class TesteDeTempoDoContem {
 			// vai entrar se o contem for falso
 			// nao entra se o contem for true
 			// (!) operador de disjuncao logica
-			if(!vetor.contem(aluno)) {
+			if(!vetor.contemFormaLinear(aluno)) {
 				System.out.println("ERRO: Aluno " + aluno + " não foi adicionado");
 			}
 		}
@@ -30,7 +30,7 @@ public class TesteDeTempoDoContem {
 			Aluno aluno = new Aluno();
 
 			// nao entra
-			if(vetor.contem(aluno)) {
+			if(vetor.contemFormaLinear(aluno)) {
 				System.out.println("ERRO: Aluno "+ aluno + " foi adicionado");
 			}
 		}
