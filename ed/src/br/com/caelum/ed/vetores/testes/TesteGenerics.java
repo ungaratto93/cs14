@@ -2,7 +2,7 @@ package br.com.caelum.ed.vetores.testes;
 
 import java.util.ArrayList;
 
-import br.com.caelum.ed.Aluno;
+import br.com.caelum.ed.alunos.Aluno;
 
 public class TesteGenerics {
 

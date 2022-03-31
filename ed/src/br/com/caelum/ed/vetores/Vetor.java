@@ -1,6 +1,6 @@
 package br.com.caelum.ed.vetores;
 
-import br.com.caelum.ed.Aluno;
+import br.com.caelum.ed.alunos.Aluno;
 
 public class Vetor {
 
