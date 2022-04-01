@@ -21,9 +21,11 @@ public class Vetor {
 	private void garanteEspaco() {
 		if(this.tamanhoAtual == this.objetos.length ) {
 			Object[] novoArray = new Object[this.objetos.length * 2];
+			// faz a copia
 			for (int index = 0; index < this.objetos.length; index++) {
 				novoArray[index] = this.objetos[index];
 			}
+			// sobreescreve a referencia com o novo array
 			this.objetos = novoArray;
 		}
 	}
@@ -40,6 +42,11 @@ public class Vetor {
 				break;
 			}
 		}
+	}
+	
+	public void adicionaSemGarantirEspaco(Aluno novoAluno) {
+		this.objetos[this.tamanhoAtual] = novoAluno;
+		this.tamanhoAtual++;
 	}
 	
 	public void adiciona(Aluno novoAluno) {
