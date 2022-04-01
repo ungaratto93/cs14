@@ -68,7 +68,7 @@ public class Vetor {
 		}
 		
 		if (objetos[posicao] == null) {
-			throw new NotFoundException("Nao encontrei isso");
+			throw new NotFoundException("Posição vazia");
 		}
 		
 		return objetos[posicao];
