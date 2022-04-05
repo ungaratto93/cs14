@@ -1,0 +1,17 @@
+package br.com.caelum.ed.vetores.testes;
+
+import java.util.ArrayList;
+
+import br.com.caelum.ed.Aluno;
+
+public class TesteGenerics {
+
+	public static void main(String[] args) {
+		
+		ArrayList vetorSemGenerics = new ArrayList();
+		ArrayList<Aluno> vetorComGenerics = new ArrayList<Aluno>();
+		
+		
+	}
+	
+}

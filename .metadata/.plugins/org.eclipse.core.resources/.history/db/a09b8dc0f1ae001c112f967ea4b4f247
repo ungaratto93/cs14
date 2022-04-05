@@ -1,0 +1,16 @@
+package br.com.caelum.ed.vetores.testes;
+
+import java.util.ArrayList;
+
+public class Teste {
+
+	public static void main(String[] args) {
+		
+		ArrayList vetor = new ArrayList();
+		
+		Aluno aluno1 = new Aluno();
+		Aluno aluno2 = new Aluno();
+		
+	}
+	
+}
