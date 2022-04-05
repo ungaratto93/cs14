@@ -1,5 +1,8 @@
 package br.com.caelum.ed.vetores;
 
+import java.util.ArrayList;
+import java.util.Vector;
+
 import br.com.caelum.ed.alunos.Aluno;
 
 public class Vetor {
@@ -82,23 +85,68 @@ public class Vetor {
 		
 	}
 	
+	public void removePorReferencia(Aluno aluno) {
+		try {
+			Vector posicoes = encontrarPosicoes(aluno);
+			boolean first= true;
+			for (int index = 0; index < posicoes.size(); index++) {
+				int el = (int) posicoes.remove(index);
+				remove(el);
+
+				first = false;
+				if (!first && index < posicoes.size()) {
+					int update = (int)posicoes.get(index)-1;
+					remove(update);
+				}
+			}
+
+		} catch (IsEmptyException ex) {
+			System.out.println(ex);
+		} catch (NotFoundException ex) {
+			System.out.println(ex);
+		}
+
+	}
+	
+	private Vector encontrarPosicoes(Aluno aluno) throws IsEmptyException {
+		Vector posicoes = new Vector();
+		
+		for (int index = 0; index < this.objetos.length; index++) {
+
+			if (this.objetos[index] != null) {
+				if(aluno.getNome() == ((Aluno) this.objetos[index]).getNome()) {
+					System.out.println("add " + index);
+					posicoes.add(index);
+				}
+			}
+		}
+		if (posicoes.isEmpty()) {
+			throw new IsEmptyException("Is Empty");
+		}
+		return posicoes;
+	}
+
 	public void remove(int posicao) throws NotFoundException {
 		if (!this.posicaoValida(posicao)) {
 			throw new IllegalArgumentException("Posição inválida");
 		}
 
+		System.out.println("remove posicao");
+		System.out.println(posicao);
+		
 		if (objetos[posicao] == null) {
 			throw new NotFoundException("Nao encontrei isso");
 		}
 		
 		for (int index = posicao; index < this.tamanhoAtual - 1; index++) {
+			System.out.println("coloca essa no lugar " + this.objetos[index + 1]);
 			this.objetos[index] = this.objetos[index + 1];
 		}
 
 		this.tamanhoAtual--;
 				
 	}
-	
+
 	public boolean contemFormaLinear(Aluno aluno) {
 		for (int index = 0; index < this.objetos.length; index++) {
 			if(aluno == this.objetos[index]) {
@@ -107,7 +155,7 @@ public class Vetor {
 		}
 		return false;
 	}
-	
+
 	public boolean contem(Aluno aluno) {
 		int indexadorLocal = 0;
 		boolean procurar = true;
@@ -115,7 +163,7 @@ public class Vetor {
 		
 		while (procurar) {
 
-			if (this.objetos.length - 1 == indexadorLocal) {
+			if (indexadorLocal > this.objetos.length) {
 				procurar = false;
 			}
 
@@ -130,7 +178,7 @@ public class Vetor {
 
 		return encontrado;
 	}
-	
+
 	public int tamanho() {
 		return this.tamanhoAtual;
 	}
