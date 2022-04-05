@@ -1,7 +1,0 @@
-package br.com.caelum.ed;
-
-public class NotFoundExceptionException extends Exception { 
-    public void NotFoundException(String errorMessage) {
-        System.out.println(errorMessage);
-    }
-}
