@@ -25,6 +25,7 @@ public class TesteClear {
 			lista.adiciona(a);
 		}
 
+
 		lista.clear();
 	}
 }
