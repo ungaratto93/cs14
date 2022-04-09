@@ -143,9 +143,8 @@ public class Vetor {
 		for(int index = posicao; index >= 0; index--) {
 			this.removePorReferencia(this.objetos[index]);
 		}
-		System.out.println("tamanho da lista -> " + this.tamanhoAtual);
 	}
-	
+
 	public boolean contemFormaLinear(Aluno aluno) {
 		for (int index = 0; index < this.objetos.length; index++) {
 			if(aluno == this.objetos[index]) {
