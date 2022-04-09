@@ -9,6 +9,7 @@ public final class FactoryAluno {
 	private FactoryAluno() {
 	}
 	
+
 	public static FactoryAluno getInstanceOf() {
 		return factory = new FactoryAluno();
 	}
