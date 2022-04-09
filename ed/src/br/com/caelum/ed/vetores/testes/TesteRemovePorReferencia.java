@@ -24,8 +24,6 @@ public class TesteRemovePorReferencia {
 		System.out.println(lista);		
 		lista.removePorReferencia(a1);
 		System.out.println(lista);
-		
-		//lista.removePorReferencia(a1);
 
 	}
 	

@@ -1,4 +1,0 @@
-INDEX VERSION 1.131+/home/eduardo/Repositorios/cs14/.metadata/.plugins/org.eclipse.jdt.core
-1865797976.index
-2651185772.index
-4199652421.index
