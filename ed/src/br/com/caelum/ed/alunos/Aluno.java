@@ -1,4 +1,4 @@
-package br.com.caelum.ed;
+package br.com.caelum.ed.alunos;
 
 public class Aluno {
 
