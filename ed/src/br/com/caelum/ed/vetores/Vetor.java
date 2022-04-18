@@ -50,7 +50,7 @@ public class Vetor {
 		this.objetos[this.tamanhoAtual] = novoAluno;
 		this.tamanhoAtual++;
 	}
-	
+
 	public void adiciona(Aluno novoAluno) {
 		this.garanteEspaco();
 		this.objetos[this.tamanhoAtual] = novoAluno;
@@ -154,33 +154,64 @@ public class Vetor {
 		return false;
 	}
 
+	public boolean compareTo(Aluno aluno, int indexadorLocal) {
+		return aluno == this.objetos[indexadorLocal];
+	}
+	
 	public boolean contem(Aluno aluno) {
 		int indexadorLocal = 0;
 		boolean procurar = true;
 		boolean encontrado = false;
 		
 		while (procurar) {
-
 			if (indexadorLocal > this.objetos.length) {
 				procurar = false;
 			}
 
-			if (aluno == this.objetos[indexadorLocal] ) {
+			
+			if ( this.compareTo(aluno, indexadorLocal) ) {
 				procurar = false;
 				encontrado = true;
 			}
 
 			indexadorLocal = indexadorLocal + 1;
-
 		}
 
 		return encontrado;
 	}
 
+	public void indexOf(Object objeto) {
+		
+		int indexadorLocal = 0;
+		boolean procurar = true;
+		
+		while (procurar) {
+			if (indexadorLocal > this.objetos.length) {
+				procurar = false;
+			}
+			
+			if ( this.compareTo((Aluno) objeto, indexadorLocal) ) {
+				procurar = false;
+				System.out.println("indexOf -> " + Integer.toString(indexadorLocal));
+			}
+
+			indexadorLocal = indexadorLocal + 1;
+		}		
+	}
+	
+	public void lastIndexOf(Object objeto) {
+		for (int indexadorLocal = this.objetos.length - 1; indexadorLocal > 0; indexadorLocal--) {
+			if (this.compareTo((Aluno) objeto, indexadorLocal)) {
+				System.out.println("indexOf -> " + Integer.toString(indexadorLocal));
+				break;
+			}
+		}
+	}
+	
 	public int tamanho() {
 		return this.tamanhoAtual;
 	}
-	
+
 	public String toString() {
 		if (this.tamanhoAtual == 0) {
 			return "[]";

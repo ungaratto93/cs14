@@ -1,31 +1,28 @@
 package br.com.caelum.ed.vetores.testes;
 
 import br.com.caelum.ed.alunos.Aluno;
+import br.com.caelum.ed.vetores.NotFoundException;
 import br.com.caelum.ed.vetores.Vetor;
 
-public class TesteClear {
-	public static void main(String[] args) {
-		Aluno a1 = new Aluno();
-		a1.setNome("Jose");
-		
-		Aluno a2 = new Aluno();
-		a2.setNome("Maria");
-		
-		Aluno a3 = new Aluno();
-		a3.setNome("Paulo");
-		Vetor lista = new Vetor();
+public class TesteLastIndexOf {
 
-		lista.adiciona(a1);
-		lista.adiciona(a2);
-		lista.adiciona(a3);
+	public static void main(String[] args) {
+		
+		Vetor lista = new Vetor();
 		
 		FactoryAluno factoryAluno = FactoryAluno.getInstanceOf();
-		for (int index = 0; index < 10000000; index++) {
+		for (int index = 0; index < 1000; index++) {
 			Aluno a = factoryAluno.create("aluno_" + Integer.toString(index));
 			lista.adiciona(a);
 		}
 
-
-		lista.clear();
+		try {
+			Aluno a = (Aluno) lista.pega(999);
+			lista.lastIndexOf(a);
+		} catch (NotFoundException e) {
+			e.printStackTrace();
+		}
+	
 	}
+
 }
