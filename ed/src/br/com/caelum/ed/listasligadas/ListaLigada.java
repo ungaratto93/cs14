@@ -46,4 +46,23 @@ public class ListaLigada {
 		
 	}
 	
+	public String toString() {
+		if (this.totalDeElementos == 0) {
+			return "[]";
+		}
+		
+		StringBuilder builder = new StringBuilder("[");
+		Celula atual = primeira;
+		
+		for(int index = 0; index < this.totalDeElementos - 1; index++) {
+			builder.append(atual.getElemento());
+			builder.append(",");
+			atual = atual.getProxima();
+		}
+	
+		builder.append(atual.getElemento());
+		builder.append("]");
+
+		return builder.toString();
+	}
 }
