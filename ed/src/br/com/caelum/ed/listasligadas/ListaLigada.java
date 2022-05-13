@@ -35,6 +35,15 @@ public class ListaLigada {
 	}
 	
 	public void adicionaNoComeco(Object elemento) {
+		if(this.totalDeElementos == 0) {
+			Celula celula = new Celula(elemento);
+			this.primeira = celula;
+			this.ultima = celula;
+		} else {
+			// primeira no construtor é endereco para proxima
+			Celula celula = new Celula(this.primeira, elemento);
+			this.primeira = celula;
+		}
 		
 	}
 	
