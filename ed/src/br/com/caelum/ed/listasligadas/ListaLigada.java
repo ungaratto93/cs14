@@ -40,7 +40,6 @@ public class ListaLigada {
 			this.primeira = celula;
 			this.ultima = celula;
 		} else {
-			// primeira no construtor é endereco para proxima
 			Celula celula = new Celula(this.primeira, elemento);
 			this.primeira.setAnterior(celula);
 			this.primeira = celula;
