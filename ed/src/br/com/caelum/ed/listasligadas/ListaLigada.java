@@ -10,6 +10,15 @@ public class ListaLigada {
 	private int totalDeElementos;
 
 	public void adiciona(Object elemento) {
+		if(this.totalDeElementos == 0) {
+			this.adicionaNoComeco(elemento);
+		} else {
+			Celula celula = new Celula(elemento);
+			this.ultima.setProxima(celula);
+			celula.setAnterior(this.ultima);
+			this.ultima = celula;
+			this.totalDeElementos++;
+		}
 		
 	}
 	
