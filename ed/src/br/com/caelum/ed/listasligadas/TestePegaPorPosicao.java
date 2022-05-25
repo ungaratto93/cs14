@@ -7,8 +7,8 @@ public class TestePegaPorPosicao {
 		lista.adiciona("Rafael");
 		lista.adiciona("Paulo");
 
-		System.out.println(lista.pega(0));
-		System.out.println(lista.pega(1));
+		System.out.println(((Celula) lista.pegaCelula(0)).getElemento());
+		System.out.println(((Celula) lista.pegaCelula(1)).getElemento());
 	}
 	
 }
