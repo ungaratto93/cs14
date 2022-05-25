@@ -22,31 +22,6 @@ public class ListaLigada {
 		
 	}
 	
-	private boolean posicaoOcupada(int posicao) {
-		return posicao >= 0 && posicao < this.totalDeElementos;
-	}
-	
-	// sobrecarga do metodo adiciona
-	public void adiciona(int posicao, Object elemento) {
-		
-	}
-	
-	public Object pega(int posicao) {
-		return null;
-	}
-	
-	public void remove(int posicao) {
-		
-	}
-	
-	public int tamanho() {
-		return 0;
-	}
-	
-	public boolean contem(Object objeto) {
-		return false;
-	}
-	
 	public void adicionaNoComeco(Object elemento) {
 		if(this.totalDeElementos == 0) {
 			Celula celula = new Celula(elemento);
@@ -60,6 +35,41 @@ public class ListaLigada {
 		this.totalDeElementos++;
 	}
 	
+	private boolean posicaoOcupada(int posicao) {
+		return posicao >= 0 && posicao < this.totalDeElementos;
+	}
+	
+	private Object pegaCelula(int posicao) {
+		if(!this.posicaoOcupada(posicao)) {
+			throw new IllegalArgumentException("Posição não existe!");
+		}
+		
+		Celula atual = this.primeira;
+		
+		for ( int index = 0; index < posicao; index++ ) {
+			atual = atual.getProxima();
+		}
+		
+		return atual;
+	}
+		
+	// sobrecarga do metodo adiciona
+	public void adiciona(int posicao, Object elemento) {
+		
+	}
+		
+	public void remove(int posicao) {
+		
+	}
+	
+	public int tamanho() {
+		return 0;
+	}
+	
+	public boolean contem(Object objeto) {
+		return false;
+	}
+
 	public void removeDoComeco() {
 		
 	}
