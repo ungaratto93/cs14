@@ -87,7 +87,16 @@ public class ListaLigada {
 	}
 
 	public void removeDoComeco() {
+		if(!this.posicaoOcupada(0)) {
+			throw new IllegalArgumentException("Posicao invalida!");
+		}
 		
+		this.primeira = primeira.getProxima();
+		this.totalDeElementos--;
+		
+		if(this.totalDeElementos == 0) {
+			this.ultima = null;
+		}
 	}
 	
 	public void removeDoFime() {
