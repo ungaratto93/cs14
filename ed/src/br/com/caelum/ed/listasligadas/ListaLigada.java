@@ -22,11 +22,15 @@ public class ListaLigada {
 		
 	}
 	
+	private boolean posicaoOcupada(int posicao) {
+		return posicao >= 0 && posicao < this.totalDeElementos;
+	}
+	
 	// sobrecarga do metodo adiciona
 	public void adiciona(int posicao, Object elemento) {
 		
 	}
-
+	
 	public Object pega(int posicao) {
 		return null;
 	}
