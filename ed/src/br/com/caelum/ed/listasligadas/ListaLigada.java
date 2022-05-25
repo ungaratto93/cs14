@@ -39,7 +39,7 @@ public class ListaLigada {
 		return posicao >= 0 && posicao < this.totalDeElementos;
 	}
 	
-	private Object pegaCelula(int posicao) {
+	public Object pegaCelula(int posicao) {
 		if(!this.posicaoOcupada(posicao)) {
 			throw new IllegalArgumentException("Posição não existe!");
 		}
