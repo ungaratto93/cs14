@@ -100,7 +100,18 @@ public class ListaLigada {
 	}
 	
 	public void removeDoFime() {
+		if(!this.posicaoOcupada(this.totalDeElementos - 1)) {
+			throw new IllegalArgumentException("Posicao invalida");
+		}
 		
+		if(this.totalDeElementos == 1) {
+			this.removeDoComeco();
+		} else {
+			Celula penultima = this.ultima.getAnterior();
+			penultima.setProxima(null);
+			this.ultima = penultima;
+			this.totalDeElementos--;
+		}		
 	}
 	
 	public String toString() {
