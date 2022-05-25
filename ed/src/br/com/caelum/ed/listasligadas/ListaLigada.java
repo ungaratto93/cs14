@@ -55,7 +55,23 @@ public class ListaLigada {
 		
 	// sobrecarga do metodo adiciona
 	public void adiciona(int posicao, Object elemento) {
-		
+		if(posicao == 0) {
+			this.adicionaNoComeco(elemento);
+		} else if (posicao == this.totalDeElementos) {
+			this.adiciona(elemento);
+		} else {
+			Celula anterior = (Celula) this.pegaCelula(posicao - 1);
+			Celula proxima = anterior.getProxima();
+
+			Celula nova = new Celula(anterior.getProxima(), elemento);
+
+			nova.setAnterior(anterior);
+			anterior.setProxima(nova);
+			proxima.setAnterior(nova);
+
+			this.totalDeElementos++;
+		}
+
 	}
 		
 	public void remove(int posicao) {
