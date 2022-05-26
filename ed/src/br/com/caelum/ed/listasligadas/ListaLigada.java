@@ -106,9 +106,9 @@ public class ListaLigada {
 	}
 	
 	public Object pega(int posicao) {
-		return ( (Celula) this.pega(posicao) ).getElemento();
+		return ( (Celula) this.pegaCelula(posicao) ).getElemento();
 	}
-	
+
 	public boolean contem(Object objeto) {
 		return false;
 	}
