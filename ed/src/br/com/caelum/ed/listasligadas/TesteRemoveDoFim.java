@@ -7,7 +7,7 @@ public class TesteRemoveDoFim {
 		lista.adiciona("Rafael");
 		lista.adiciona("Paulo");
 		
-		lista.removeDoFime();
+		lista.removeDoFim();
 		
 		System.out.println(lista);
 	}
