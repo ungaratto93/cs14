@@ -99,7 +99,7 @@ public class ListaLigada {
 		}
 	}
 	
-	public void removeDoFime() {
+	public void removeDoFim() {
 		if(!this.posicaoOcupada(this.totalDeElementos - 1)) {
 			throw new IllegalArgumentException("Posicao invalida");
 		}
