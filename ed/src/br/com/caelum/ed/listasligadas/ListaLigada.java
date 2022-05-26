@@ -103,7 +103,7 @@ public class ListaLigada {
 	}
 	
 	public int tamanho() {
-		return 0;
+		return this.totalDeElementos;
 	}
 	
 	public boolean contem(Object objeto) {
