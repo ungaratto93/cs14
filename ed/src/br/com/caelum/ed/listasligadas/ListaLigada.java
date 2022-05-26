@@ -99,11 +99,14 @@ public class ListaLigada {
 			
 			this.totalDeElementos--;
 		}
-		
 	}
 	
 	public int tamanho() {
 		return this.totalDeElementos;
+	}
+	
+	public Object pega(int posicao) {
+		return ( (Celula) this.pega(posicao) ).getElemento();
 	}
 	
 	public boolean contem(Object objeto) {
