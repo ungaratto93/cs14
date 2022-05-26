@@ -109,7 +109,16 @@ public class ListaLigada {
 		return ( (Celula) this.pegaCelula(posicao) ).getElemento();
 	}
 
-	public boolean contem(Object objeto) {
+	public boolean contem(Object elemento) {
+		Celula atual = this.primeira;
+		
+		while (atual != null) {
+			if(atual.getElemento() == elemento) {
+				return true;
+			}
+			atual = atual.getProxima();
+		}
+
 		return false;
 	}
 
