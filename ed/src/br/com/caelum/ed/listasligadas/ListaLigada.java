@@ -4,6 +4,12 @@ public class ListaLigada {
 
 	// encapsula as celulas de forma privada para nenhum cliente ter conhecimento
 	// dessa estrutura interna
+
+	/*Nota sobre posição:
+	 * posicao == índice
+	 * sempre -1 em relacao a quantidade total de elementos (nodos) fisicamentes na lista
+	 * ou seja, 10 nodos, como índices de 0 a 9
+	 * */
 	
 	private Celula primeira;
 	private Celula ultima;
