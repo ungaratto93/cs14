@@ -75,6 +75,24 @@ public class ListaLigada {
 	}
 		
 	public void remove(int posicao) {
+		if(!this.posicaoOcupada(posicao)) {
+			throw new IllegalArgumentException("Posicao não existe");
+		}
+		
+		if (posicao == 0) {
+			this.removeDoComeco();
+		} else if (posicao == this.totalDeElementos - 1) {
+			this.removeDoFim();
+		} else {
+			Celula anterior = ((Celula) this.pegaCelula(posicao - 1));
+			Celula atual = anterior.getProxima();
+			Celula proxima = atual.getProxima();
+			
+			anterior.setProxima(proxima);
+			proxima.setAnterior(anterior);
+			
+			this.totalDeElementos--;
+		}
 		
 	}
 	
