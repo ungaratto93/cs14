@@ -1,6 +1,8 @@
-package br.com.caelum.ed.listasligadas;
+package br.com.caelum.ed.listasligadas.testes;
 
-public class TesteAdiciona {
+import br.com.caelum.ed.listasligadas.ListaLigada;
+
+public class TesteRemovePorPosicao {
 	public static void main(String[] args) {
 		ListaLigada lista = new ListaLigada();
 		
@@ -8,7 +10,8 @@ public class TesteAdiciona {
 		lista.adiciona("Paulo");
 		lista.adiciona("Camila");
 
+		lista.remove(1);
+
 		System.out.println(lista);
-	}
-	
+	}	
 }

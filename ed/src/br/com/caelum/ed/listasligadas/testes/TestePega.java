@@ -1,4 +1,6 @@
-package br.com.caelum.ed.listasligadas;
+package br.com.caelum.ed.listasligadas.testes;
+
+import br.com.caelum.ed.listasligadas.ListaLigada;
 
 public class TestePega {
 	public static void main(String[] args) {
