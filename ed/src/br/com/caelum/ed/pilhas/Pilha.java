@@ -15,7 +15,10 @@ public class Pilha {
 	}
 
 	// lembre-se indices comecam em 0, entao é sempre tamanhoFisico - 1
-	public Peca remove() {	
+	public Peca remove() {
+		if (this.vazia()) {
+			throw new IndexOutOfBoundsException("Pilha vazia");
+		}
 		return this.pecas.remove(this.pecas.size() - 1);
 	}
 	
