@@ -1,4 +1,4 @@
-package br.com.caelum.ed.pilhas.testes.genericos;
+package br.com.caelum.ed.pilhas.testes.genericas;
 
 import br.com.caelum.ed.pilhas.Peca;
 import br.com.caelum.ed.pilhas.PilhaGenerica;
