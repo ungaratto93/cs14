@@ -12,6 +12,9 @@ public class PilhaGenerica {
 	}
 	
 	public Object remove() {
+		if (this.vazia()) {
+			throw new IndexOutOfBoundsException("Pilha vazia");
+		}
 		return this.objetos.remove(this.objetos.size() - 1);
 	}
 	
