@@ -1,4 +1,4 @@
-package br.com.caelum.ed.pilhas;
+package br.com.caelum.ed.pilhas.cripto;
 
 public class Mensagem {
 
@@ -15,4 +15,5 @@ public class Mensagem {
 	public char getChartAt(int index) {
 		return this.texto.charAt(index);
 	}
+		
 }

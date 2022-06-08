@@ -1,6 +1,6 @@
 package br.com.caelum.ed.pilhas.testes.cripto;
 
-import br.com.caelum.ed.pilhas.Mensagem;
+import br.com.caelum.ed.pilhas.cripto.Mensagem;
 
 public class TesteGetCharAt {
 
