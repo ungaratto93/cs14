@@ -1,6 +1,6 @@
 package br.com.caelum.ed.pilhas.cripto;
 
-public class Mensagem {
+public class Message {
 
 	public String texto = "";
 	
