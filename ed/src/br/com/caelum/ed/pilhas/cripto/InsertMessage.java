@@ -8,8 +8,8 @@ public class InsertMessage {
 
 		//String reverseMessage = ReverseMessage.reverse(message);
 
-		for (int i = 0; i < message.length(); i++) {
-			Character character = WrapperChar.fromChar(message.charAt(i));
+		for (int index = 0; index < message.length(); index++) {
+			Character character = WrapperChar.toCharacter(message.charAt(index));
 			pilha.insere(character);
 		}
 
