@@ -37,7 +37,7 @@ public class TestePerformanceLinkedListVsArrayList {
 			index++;
 		}
 		end = System.currentTimeMillis();
-		System.out.println("[Fila Usando LinkedList] Performance inserindo -> " + ( start - end )/1000.0 + "ms");
+		System.out.println("[Fila Usando LinkedList] Performance inserindo -> " + ( end - start )/1000.0 + "ms");
 		
 		start = System.currentTimeMillis();
 		while( times > index) {
@@ -45,7 +45,7 @@ public class TestePerformanceLinkedListVsArrayList {
 			times--;
 		}
 		end = System.currentTimeMillis();
-		System.out.println("[Fila Usando LinkedList] Performance removendo -> " + ( start - end )/1000.0 + "ms");
+		System.out.println("[Fila Usando LinkedList] Performance removendo -> " + ( end - start )/1000.0 + "ms");
 
 	}
 }
