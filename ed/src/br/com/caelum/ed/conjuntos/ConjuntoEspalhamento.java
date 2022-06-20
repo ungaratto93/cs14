@@ -53,6 +53,6 @@ public class ConjuntoEspalhamento {
 	}
 	
 	public int tamanho() {
-		return 0;
+		return this.tamanho;
 	}
 }
