@@ -8,6 +8,8 @@ public class ConjuntoEspalhamento {
 	private static int COLUNAS = 26;
 	private List<List<String>> tabela = new ArrayList<List<String>>(COLUNAS);
 	
+	private int tamanho = 0;
+	
 	public ConjuntoEspalhamento() {
 		for (int index = 0; index < COLUNAS; index++) {
 			LinkedList<String> lista = new LinkedList<String>();
@@ -20,7 +22,12 @@ public class ConjuntoEspalhamento {
 	}
 	
 	public void adiciona(String palavra) {
-		//implementação
+		if(!contemPalavra(palavra)) {
+			int indice = this.calculaIndiceDaTabela(palavra);
+			List<String> lista = this.tabela.get(indice);
+			lista.add(palavra);
+			this.tamanho++;
+		}
 	}
 	
 	public void remove(String palavra) {
