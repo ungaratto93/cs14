@@ -30,6 +30,11 @@ public class ConjuntoEspalhamento {
 		}
 	}
 	
+	private boolean contemPalavra(String palavra) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	public void remove(String palavra) {
 		//implementação
 	}
