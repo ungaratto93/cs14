@@ -1,8 +1,10 @@
 package br.com.caelum.ed.conjuntos.testes;
 
+import java.util.List;
+
 import br.com.caelum.ed.conjuntos.ConjuntoEspalhamento;
 
-public class TesteAdiciona {
+public class TesteExibePalavras {
 	public static void main(String[] args) {
 		
 		ConjuntoEspalhamento conjunto = new ConjuntoEspalhamento();
@@ -11,7 +13,9 @@ public class TesteAdiciona {
 		conjunto.adiciona("computador");
 		conjunto.adiciona("apostila");
 		
-		System.out.println("O tamanho do conjunto e 3 ? " + (conjunto.tamanho() == 3));		
-
+		List<String> palavras = conjunto.pegaTodas();
+		for (String palavra : palavras ) {
+			System.out.println(palavra);
+		}
 	}
 }
