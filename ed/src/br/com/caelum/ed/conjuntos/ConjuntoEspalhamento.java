@@ -15,6 +15,10 @@ public class ConjuntoEspalhamento {
 		}
 	}
 	
+	private int calculaIndiceDaTabela(String palavra) {
+		return palavra.toLowerCase().charAt(0) % COLUNAS;
+	}
+	
 	public void adiciona(String palavra) {
 		//implementação
 	}
