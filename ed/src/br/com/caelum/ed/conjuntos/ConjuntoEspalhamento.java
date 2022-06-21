@@ -36,7 +36,12 @@ public class ConjuntoEspalhamento {
 	}
 
 	public void remove(String palavra) {
-		//implementação
+		if(this.contemPalavra(palavra)) {
+			int indice = this.calculaIndiceDaTabela(palavra);
+			List<String> lista = this.tabela.get(indice);
+			lista.remove(palavra);
+			this.tamanho--;
+		}
 	}
 
 	public Boolean contem(String palavra) {
