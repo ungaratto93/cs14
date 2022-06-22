@@ -36,7 +36,7 @@ public class ConjuntoEspalhamento {
 	}
 
 	public void remove(String palavra) {
-		if(this.contemPalavra(palavra)) {
+		if(this.contem(palavra)) {
 			int indice = this.calculaIndiceDaTabela(palavra);
 			List<String> lista = this.tabela.get(indice);
 			lista.remove(palavra);
@@ -45,8 +45,9 @@ public class ConjuntoEspalhamento {
 	}
 
 	public Boolean contem(String palavra) {
-		//implementação
-		return false;
+		int indice = this.calculaIndiceDaTabela(palavra);
+		List<String> lista = this.tabela.get(indice);
+		return lista.contains(palavra);
 	}
 
 	public List<String> pegaTodas() {
