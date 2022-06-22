@@ -22,17 +22,12 @@ public class ConjuntoEspalhamento {
 	}
 	
 	public void adiciona(String palavra) {
-		if(!contemPalavra(palavra)) {
+		if(!contem(palavra)) {
 			int indice = this.calculaIndiceDaTabela(palavra);
 			List<String> lista = this.tabela.get(indice);
 			lista.add(palavra);
 			this.tamanho++;
 		}
-	}
-	
-	private boolean contemPalavra(String palavra) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	public void remove(String palavra) {
