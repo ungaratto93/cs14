@@ -5,9 +5,12 @@ import br.com.caelum.ed.conjuntos.ConjuntoEspalhamento;
 public class TesteContem {
 	public static void main(String[] args) {
 		ConjuntoEspalhamento conjunto = new ConjuntoEspalhamento();
-		String palavra = "paulo";
-		conjunto.adiciona(palavra);
+		String palavraExistente = "paulo";
+		String palavraInexistente = "jose";
+		conjunto.adiciona(palavraExistente);
 		System.out.println("conjunto.contem(paulo)");
-		System.out.println(conjunto.contem(palavra));
+		System.out.println(conjunto.contem(palavraExistente));
+		System.out.println("conjunto.contem(jose)");
+		System.out.println(conjunto.contem(palavraInexistente));
 	}
 }
