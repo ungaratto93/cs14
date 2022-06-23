@@ -19,6 +19,7 @@ public class ConjuntoEspalhamento {
 	
 	public void adiciona(String palavra) {
 		if(!contem(palavra)) {
+			this.verificarCargaDaTabela();
 			int indice = this.calculaIndiceDaTabela(palavra);
 			List<String> lista = this.tabela.get(indice);
 			lista.add(palavra);
@@ -28,6 +29,7 @@ public class ConjuntoEspalhamento {
 
 	public void remove(String palavra) {
 		if(this.contem(palavra)) {
+			this.verificarCargaDaTabela();
 			int indice = this.calculaIndiceDaTabela(palavra);
 			List<String> lista = this.tabela.get(indice);
 			lista.remove(palavra);
@@ -80,6 +82,38 @@ public class ConjuntoEspalhamento {
 	private int calculaIndiceDaTabela(String palavra) {
 		int codigoDeEspalhamento = Math.abs(this.calculaCodigoDeEspalhamento(palavra));
 		return codigoDeEspalhamento % tabela.size();
+	}
+	
+	private void limparTabela() {
+		this.tabela.clear();
+	}
+	
+	private void adicionaListas(int novaCapacidade) {
+		for (int index = 0; index < novaCapacidade; index++) {
+			this.tabela.add(new LinkedList<String>());
+		}
+	}
+	
+	private void adicionaTodas(List<String> palavras) {
+		for ( String palavra : palavras ) { this.adiciona(palavra); }
+	}
+	
+	private void redimensionaTabela(int novaCapacidade) {
+		List<String> palavras = this.pegaTodas();
+		this.limparTabela();
+		this.adicionaListas(novaCapacidade);
+		this.adicionaTodas(palavras);
+	}
+	
+	private void verificarCargaDaTabela() {
+		int capacidade = this.tabela.size();
+		double carga = (double) this.tamanho / capacidade;
+		
+		if (carga > 0.75) {
+			this.redimensionaTabela(capacidade * 2);
+		} else if (carga < 0.25) {
+			this.redimensionaTabela(Math.max(capacidade / 2, 10));
+		}
 	}
 	
 }
