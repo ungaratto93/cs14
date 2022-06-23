@@ -17,10 +17,6 @@ public class ConjuntoEspalhamento {
 		}
 	}
 	
-	private int calculaIndiceDaTabela(String palavra) {
-		return palavra.toLowerCase().charAt(0) % COLUNAS;
-	}
-	
 	public void adiciona(String palavra) {
 		if(!contem(palavra)) {
 			int indice = this.calculaIndiceDaTabela(palavra);
@@ -65,6 +61,20 @@ public class ConjuntoEspalhamento {
 			}
 			System.out.println("]");
 		}
-		
 	}
+	
+	
+	private int calculaCodigoDeEspalhamento(String palavra) {
+		int codigo = 1;
+		for (int index = 0; index < palavra.length(); index++) {
+			codigo = 31 * codigo + palavra.charAt(index);
+		}
+		return codigo;
+	}
+	
+	private int calculaIndiceDaTabela(String palavra) {
+		int codigoDeEspalhamento = Math.abs(this.calculaCodigoDeEspalhamento(palavra));
+		return codigoDeEspalhamento % tabela.size();
+	}
+	
 }
