@@ -63,10 +63,15 @@ public class ConjuntoEspalhamento {
 		}
 	}
 	
-	
 	private int calculaCodigoDeEspalhamento(String palavra) {
 		int codigo = 1;
 		for (int index = 0; index < palavra.length(); index++) {
+			/* numeric promotion
+			 * https://stackoverflow.com/questions/54402612/java-implicit-conversion-between-int-and-char
+			 neste caso de opperacao entre inteiros e chars, o char e promovido para inteiro,
+			 entao a operacao de soma é realizada
+			 Exemplo = 31 * 1 + 48 (valor ascii do char ʽ0ʽ)
+			 */
 			codigo = 31 * codigo + palavra.charAt(index);
 		}
 		return codigo;
