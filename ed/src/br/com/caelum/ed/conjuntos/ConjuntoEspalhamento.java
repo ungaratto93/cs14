@@ -56,4 +56,15 @@ public class ConjuntoEspalhamento {
 	public int tamanho() {
 		return this.tamanho;
 	}
+
+	public void imprimeTabela() {
+		for (List<String> lista : this.tabela) {
+			System.out.print("[");
+			for(int index = 0; index < lista.size(); index++) {
+				System.out.print("*");
+			}
+			System.out.println("]");
+		}
+		
+	}
 }
