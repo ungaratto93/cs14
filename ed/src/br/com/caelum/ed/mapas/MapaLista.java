@@ -16,18 +16,23 @@ public class MapaLista {
 
 	public Carro pega(String placa) {
 		Carro carro = null;
+		int indice = 0;
 		for (Associacao associacao : this.associacoes) {
 			if (placa.equals(associacao.getPlaca())) {
 				carro = associacao.getCarro();
+				break;
 			}
-			throw new IllegalArgumentException("Chave não existe");
+			if (indice >= this.associacoes.size()) {
+				throw new IllegalArgumentException("Chave não existe");
+			}
+			indice++;
 		}
 		return carro;
 	}
 
 	public void remove(String placa) {
 		if (this.contemChave(placa)) {
-			for (int index = 0; index < this.associacoes.size(); index++) {
+			for (int index = 0; index < this.associacoes.size();) {
 				Associacao associacao = this.associacoes.get(index);
 
 				if (placa.equals(associacao.getPlaca())) {
@@ -41,7 +46,7 @@ public class MapaLista {
 		}
 	}
 
-	private boolean contemChave(String placa) {
+	public boolean contemChave(String placa) {
 		Boolean contem = Boolean.FALSE;
 		for (Associacao associacao : this.associacoes) {
 			if (placa.equals(associacao.getPlaca())) {
