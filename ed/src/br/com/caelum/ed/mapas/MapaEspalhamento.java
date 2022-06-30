@@ -77,6 +77,7 @@ public class MapaEspalhamento {
 		int indice = this.calculaIndiceDaTabela(placa);
 		List<Associacao> lista = this.tabela.get(indice);
 
+		this.verificarCargaDaTabela();
 		for (int index = 0; index < lista.size(); index++) {
 			Associacao associacao = lista.get(index);
 			if (associacao.getPlaca().equals(placa)) {
@@ -92,6 +93,7 @@ public class MapaEspalhamento {
 			this.remove(placa);
 		}
 
+		this.verificarCargaDaTabela();
 		int indice = this.calculaIndiceDaTabela(placa);
 		List<Associacao> lista = tabela.get(indice);
 		lista.add(new Associacao(placa, carro));
@@ -110,5 +112,5 @@ public class MapaEspalhamento {
 
 		throw new IllegalArgumentException("Chave não existe");
 	}
-	v
+
 }
