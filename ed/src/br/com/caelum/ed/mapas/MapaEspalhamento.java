@@ -7,6 +7,7 @@ import java.util.List;
 public class MapaEspalhamento {
 
 	private List<List<Associacao>> tabela = new ArrayList<List<Associacao>>();
+	private int tamanho = 0;
 
 	public MapaEspalhamento() {
 		for (int index = 0; index < 100; index++) {
@@ -18,6 +19,46 @@ public class MapaEspalhamento {
 		return Math.abs(placa.hashCode() % this.tabela.size());
 	}
 
+	public List<Associacao> pegaTodas() {
+		List<Associacao> assocs = new LinkedList<Associacao>();
+		for (int index = 0; index < this.tabela.size(); index++) {
+			assocs.addAll(this.tabela.get(index));
+		}
+		return assocs;
+	}
+
+	private void limparTabela() {
+		this.tabela.clear();
+	}
+	
+	private void adicionaListas(int novaCapacidade) {
+		for (int index = 0; index < novaCapacidade; index++) {
+			this.tabela.add(new LinkedList<Associacao>());
+		}
+	}
+	
+	private void adicionaTodas(List<Associacao> assocs) {
+		for ( Associacao assoc : assocs ) { this.adiciona(assoc.getPlaca(), assoc.getCarro()); }
+	}
+	
+	private void redimensionaTabela(int novaCapacidade) {
+		List<Associacao> assocs = this.pegaTodas();
+		this.limparTabela();
+		this.adicionaListas(novaCapacidade);
+		this.adicionaTodas(assocs);
+	}
+
+	private void verificarCargaDaTabela() {
+		int capacidade = this.tabela.size();
+		double carga = (double) this.tamanho  / capacidade;
+		
+		if (carga > 0.75) {
+			this.redimensionaTabela(capacidade * 2);
+		} else if (carga < 0.25) {
+			this.redimensionaTabela(Math.max(capacidade / 2, 10));
+		}
+	}
+	
 	public boolean contem(String placa) {
 		int indice = this.calculaIndiceDaTabela(placa);
 		List<Associacao> lista = this.tabela.get(indice);
@@ -69,5 +110,5 @@ public class MapaEspalhamento {
 
 		throw new IllegalArgumentException("Chave não existe");
 	}
-	
+	v
 }
