@@ -1,21 +1,21 @@
 package br.com.caelum.ed.mapas;
 
-public class Associacao {
+public class Associacao<C, V> {
 
-	private String placa;
-	private Carro carro;
+	private C chave;
+	private V valor;
 	
-	public Associacao(String placa, Carro carro) {
-		this.placa = placa;
-		this.carro = carro;
+	public Associacao(C chave, V valor) {
+		this.chave = chave;
+		this.valor = valor;
 	}
 	
-	public String getPlaca() {
-		return this.placa;
+	public C getChave() {
+		return this.chave;
 	}
 
-	public Carro getCarro() {
-		return this.carro;
+	public V getValor() {
+		return this.valor;
 	}
 	
 }

@@ -5,21 +5,21 @@ import java.util.List;
 
 public class MapaLista {
 
-	private List<Associacao> associacoes = new ArrayList<Associacao>();
+	private List<AssociacaoFixa> associacoes = new ArrayList<AssociacaoFixa>();
 
 	public void adiciona(String placa, Carro carro) {
 		if (!this.contemChave(placa)) {
-			Associacao associacao = new Associacao(placa, carro);
-			this.associacoes.add(associacao);
+			AssociacaoFixa AssociacaoFixa = new AssociacaoFixa(placa, carro);
+			this.associacoes.add(AssociacaoFixa);
 		}
 	}
 
 	public Carro pega(String placa) {
 		Carro carro = null;
 		int indice = 0;
-		for (Associacao associacao : this.associacoes) {
-			if (placa.equals(associacao.getPlaca())) {
-				carro = associacao.getCarro();
+		for (AssociacaoFixa AssociacaoFixa : this.associacoes) {
+			if (placa.equals(AssociacaoFixa.getPlaca())) {
+				carro = AssociacaoFixa.getCarro();
 				break;
 			}
 			if (indice >= this.associacoes.size()) {
@@ -33,9 +33,9 @@ public class MapaLista {
 	public void remove(String placa) {
 		if (this.contemChave(placa)) {
 			for (int index = 0; index < this.associacoes.size();) {
-				Associacao associacao = this.associacoes.get(index);
+				AssociacaoFixa AssociacaoFixa = this.associacoes.get(index);
 
-				if (placa.equals(associacao.getPlaca())) {
+				if (placa.equals(AssociacaoFixa.getPlaca())) {
 					this.associacoes.remove(index);
 					break;
 				} else {
@@ -48,7 +48,7 @@ public class MapaLista {
 
 	public boolean contemChave(String placa) {
 		Boolean contem = Boolean.FALSE;
-		for (Associacao associacao : this.associacoes) {
+		for (AssociacaoFixa associacao : this.associacoes) {
 			if (placa.equals(associacao.getPlaca())) {
 				contem = Boolean.TRUE;
 			}
