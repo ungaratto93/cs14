@@ -18,5 +18,18 @@ public class MapaEspalhamento {
 		return Math.abs(placa.hashCode() % this.tabela.size());
 	}
 	
-	
+	public boolean contem(String placa) {
+		int indice = this.calculaIndiceDaTabela(placa);
+		List<Associacao> lista = this.tabela.get(indice);
+		
+		for (int index = 0; index < lista.size(); index++) {
+			Associacao associacao = lista.get(index);
+			if(associacao.getPlaca().equals(placa)) {
+				return true; 
+			}
+
+		}
+		return false; 		
+	}
+
 }
