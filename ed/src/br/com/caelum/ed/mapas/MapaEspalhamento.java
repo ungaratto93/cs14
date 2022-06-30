@@ -4,23 +4,23 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class MapaEspalhamento {
+public class MapaEspalhamento<C, V> {
 
-	private List<List<Associacao>> tabela = new ArrayList<List<Associacao>>();
+	private List<List<Associacao<C, V>>> tabela = new ArrayList<List<Associacao<C, V>>>();
 	private int tamanho = 0;
 
 	public MapaEspalhamento() {
 		for (int index = 0; index < 100; index++) {
-			this.tabela.add(new LinkedList<Associacao>());
+			this.tabela.add(new LinkedList<Associacao<C, V>>());
 		}
 	}
 
-	private int calculaIndiceDaTabela(String placa) {
-		return Math.abs(placa.hashCode() % this.tabela.size());
+	private int calculaIndiceDaTabela(C chave) {
+		return Math.abs(chave.hashCode() % this.tabela.size());
 	}
 
-	public List<Associacao> pegaTodas() {
-		List<Associacao> assocs = new LinkedList<Associacao>();
+	public List<Associacao<C, V>> pegaTodas() {
+		List<Associacao<C, V>> assocs = new LinkedList<Associacao<C, V>>();
 		for (int index = 0; index < this.tabela.size(); index++) {
 			assocs.addAll(this.tabela.get(index));
 		}
@@ -30,19 +30,21 @@ public class MapaEspalhamento {
 	private void limparTabela() {
 		this.tabela.clear();
 	}
-	
+
 	private void adicionaListas(int novaCapacidade) {
 		for (int index = 0; index < novaCapacidade; index++) {
-			this.tabela.add(new LinkedList<Associacao>());
+			this.tabela.add(new LinkedList<Associacao<C, V>>());
 		}
 	}
-	
-	private void adicionaTodas(List<Associacao> assocs) {
-		for ( Associacao assoc : assocs ) { this.adiciona(assoc.getPlaca(), assoc.getCarro()); }
+
+	private void adicionaTodas(List<Associacao<C, V>> assocs) {
+		for (Associacao<C, V> assoc : assocs) {
+			this.adiciona(assoc.getChave(), assoc.getValor());
+		}
 	}
-	
+
 	private void redimensionaTabela(int novaCapacidade) {
-		List<Associacao> assocs = this.pegaTodas();
+		List<Associacao<C, V>> assocs = this.pegaTodas();
 		this.limparTabela();
 		this.adicionaListas(novaCapacidade);
 		this.adicionaTodas(assocs);
@@ -50,22 +52,22 @@ public class MapaEspalhamento {
 
 	private void verificarCargaDaTabela() {
 		int capacidade = this.tabela.size();
-		double carga = (double) this.tamanho  / capacidade;
-		
+		double carga = (double) this.tamanho / capacidade;
+
 		if (carga > 0.75) {
 			this.redimensionaTabela(capacidade * 2);
 		} else if (carga < 0.25) {
 			this.redimensionaTabela(Math.max(capacidade / 2, 10));
 		}
 	}
-	
-	public boolean contem(String placa) {
-		int indice = this.calculaIndiceDaTabela(placa);
-		List<Associacao> lista = this.tabela.get(indice);
+
+	public boolean contem(C chave) {
+		int indice = this.calculaIndiceDaTabela(chave);
+		List<Associacao<C, V>> lista = this.tabela.get(indice);
 
 		for (int index = 0; index < lista.size(); index++) {
-			Associacao associacao = lista.get(index);
-			if (associacao.getPlaca().equals(placa)) {
+			Associacao<C, V> associacao = lista.get(index);
+			if (associacao.getChave().equals(chave)) {
 				return true;
 			}
 
@@ -73,14 +75,14 @@ public class MapaEspalhamento {
 		return false;
 	}
 
-	public void remove(String placa) {
-		int indice = this.calculaIndiceDaTabela(placa);
-		List<Associacao> lista = this.tabela.get(indice);
+	public void remove(C chave) {
+		int indice = this.calculaIndiceDaTabela(chave);
+		List<Associacao<C, V>> lista = this.tabela.get(indice);
 
 		this.verificarCargaDaTabela();
 		for (int index = 0; index < lista.size(); index++) {
-			Associacao associacao = lista.get(index);
-			if (associacao.getPlaca().equals(placa)) {
+			Associacao<C, V> associacao = lista.get(index);
+			if (associacao.getChave().equals(chave)) {
 				lista.remove(index);
 				return;
 			}
@@ -88,25 +90,25 @@ public class MapaEspalhamento {
 		throw new IllegalArgumentException("A chave não existe.");
 	}
 
-	public void adiciona(String placa, Carro carro) {
-		if (this.contem(placa)) {
-			this.remove(placa);
+	public void adiciona(C chave, V valor) {
+		if (this.contem(chave)) {
+			this.remove(chave);
 		}
 
 		this.verificarCargaDaTabela();
-		int indice = this.calculaIndiceDaTabela(placa);
-		List<Associacao> lista = tabela.get(indice);
-		lista.add(new Associacao(placa, carro));
+		int indice = this.calculaIndiceDaTabela(chave);
+		List<Associacao<C, V>> lista = tabela.get(indice);
+		lista.add(new Associacao<C, V>(chave, valor));
 	}
 
-	public Carro pega(String placa) {
-		int indice = this.calculaIndiceDaTabela(placa);
-		List<Associacao> lista = this.tabela.get(indice);
-		
+	public V pega(C chave) {
+		int indice = this.calculaIndiceDaTabela(chave);
+		List<Associacao<C, V>> lista = this.tabela.get(indice);
+
 		for (int index = 0; index < lista.size(); index++) {
-			Associacao associacao = lista.get(index);
-			if(associacao.getPlaca().equals(placa)) {
-				return associacao.getCarro();
+			Associacao<C, V> associacao = lista.get(index);
+			if (associacao.getChave().equals(chave)) {
+				return associacao.getValor();
 			}
 		}
 
