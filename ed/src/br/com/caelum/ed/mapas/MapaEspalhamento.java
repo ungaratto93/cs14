@@ -46,6 +46,14 @@ public class MapaEspalhamento {
 		throw new IllegalArgumentException("A chave não existe.");
 	}
 	
+	public void adiciona(String placa, Carro carro) {
+		if(this.contem(placa)) {
+			this.remove(placa);
+		}
+		
+		int indice = this.calculaIndiceDaTabela(placa);
+		List<Associacao> lista = tabela.get(indice);
+		lista.add(new Associacao(placa, carro));
+	} 
 	
- 	
 }
