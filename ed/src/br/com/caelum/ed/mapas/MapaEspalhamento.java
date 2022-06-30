@@ -14,4 +14,9 @@ public class MapaEspalhamento {
 		}
 	}
 	
+	private int calculaIndiceDaTabela(String placa) {
+		return Math.abs(placa.hashCode() % this.tabela.size());
+	}
+	
+	
 }
