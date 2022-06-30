@@ -32,4 +32,20 @@ public class MapaEspalhamento {
 		return false; 		
 	}
 
+	public void remove(String placa) {
+		int indice = this.calculaIndiceDaTabela(placa);
+		List<Associacao> lista = this.tabela.get(indice);
+		
+		for (int index = 0; index < lista.size(); index++) {
+			Associacao associacao = lista.get(index);
+			if(associacao.getPlaca().equals(placa)) {
+				lista.remove(index);
+				return;
+			}
+		}
+		throw new IllegalArgumentException("A chave não existe.");
+	}
+	
+	
+ 	
 }
